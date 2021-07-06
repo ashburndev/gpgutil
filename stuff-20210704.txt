@@ -1,0 +1,110 @@
+11:05 AM 7/4/2021
+
+remove all the duplicate files ... like jdk-8u131-windows-x64.exe
+
+C:\Users\David Holberton\Downloads
+C:\Users\David Holberton\SaveDownloads
+
+https://www.winhelponline.com/blog/compare-two-directories-files-find-differences/
+
+https://www.microsoft.com/en-us/download/search.aspx?q=synctoy
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+here is the one file where the filename appears in both directories, but the file is different (both size and date)
+
+C:\Users\David Holberton>
+C:\Users\David Holberton>dir Downloads\incubating-netbeans-java-9.0-bin.zip
+ Volume in drive C has no label.
+ Volume Serial Number is 4603-A8D3
+
+ Directory of C:\Users\David Holberton\Downloads
+
+08/26/2018  09:37 AM       169,301,845 incubating-netbeans-java-9.0-bin.zip
+               1 File(s)    169,301,845 bytes
+               0 Dir(s)   7,976,910,848 bytes free
+
+C:\Users\David Holberton>
+C:\Users\David Holberton>dir SaveDownloads\incubating-netbeans-java-9.0-bin.zip
+ Volume in drive C has no label.
+ Volume Serial Number is 4603-A8D3
+
+ Directory of C:\Users\David Holberton\SaveDownloads
+
+08/25/2018  11:22 AM            17,001 incubating-netbeans-java-9.0-bin.zip
+               1 File(s)         17,001 bytes
+               0 Dir(s)   7,976,910,848 bytes free
+
+C:\Users\David Holberton>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+7z a "\Users\David Holberton"\GnuPG.zip GnuPG
+7z a "\Users\David Holberton"\Gpg4win.zip Gpg4win
+
+
+07/03/2021  05:11 PM    <DIR>          ..
+07/03/2021  05:11 PM    <DIR>          .
+07/03/2021  05:11 PM    <DIR>          GnuPG
+07/03/2021  05:11 PM    <DIR>          Gpg4win
+               0 File(s)              0 bytes
+              35 Dir(s)  54,692,749,312 bytes free
+
+C:\Program Files (x86)>7z a "\Users\David Holberton"\GnuPG.zip GnuPG
+
+7-Zip 19.00 (x64) : Copyright (c) 1999-2018 Igor Pavlov : 2019-02-21
+
+Scanning the drive:
+72 folders, 91 files, 13695064 bytes (14 MiB)
+
+Creating archive: \Users\David Holberton\GnuPG.zip
+
+Add new data to archive: 72 folders, 91 files, 13695064 bytes (14 MiB)
+
+
+Files read from disk: 91
+Archive size: 5129481 bytes (5010 KiB)
+Everything is Ok
+
+C:\Program Files (x86)>
+
+C:\Program Files (x86)>
+C:\Program Files (x86)>7z a "\Users\David Holberton"\Gpg4win.zip Gpg4win
+
+7-Zip 19.00 (x64) : Copyright (c) 1999-2018 Igor Pavlov : 2019-02-21
+
+Scanning the drive:
+47 folders, 227 files, 55992877 bytes (54 MiB)
+
+Creating archive: \Users\David Holberton\Gpg4win.zip
+
+Add new data to archive: 47 folders, 227 files, 55992877 bytes (54 MiB)
+
+
+Files read from disk: 227
+Archive size: 25548824 bytes (25 MiB)
+Everything is Ok
+
+C:\Program Files (x86)>
+
+07/03/2021  05:40 PM             6,061 stuff-20210703.txt
+07/04/2021  12:49 PM             1,717 directorydiff1.groovy
+07/04/2021  01:03 PM             2,641 directorydiff2.groovy
+07/04/2021  01:17 PM         5,129,481 GnuPG.zip
+07/04/2021  01:18 PM        25,548,824 Gpg4win.zip
+07/04/2021  01:19 PM             2,774 stuff-20210704.txt
+              75 File(s)     32,855,144 bytes
+              60 Dir(s)  54,662,635,520 bytes free
+
+C:\Users\David Holberton>
+
+
+
+
+
+
+
+
+
+
+

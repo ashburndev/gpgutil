@@ -1,0 +1,174 @@
+4:29 PM 7/3/2021
+
+Microsoft Windows [Version 10.0.19042.1052]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\David Holberton>regedit...
+
+... here are some interesting registry values ...
+
+Computer\HKEY_CURRENT_USER\SOFTWARE
+Computer\HKEY_CURRENT_USER\SOFTWARE\GNU  (does not exist)
+Computer\HKEY_CURRENT_USER\SOFTWARE\Raspberry Pi\Imager\caching
+Computer\HKEY_CURRENT_USER\SOFTWARE\7-Zip
+  Path64  C:\localapps\7-Zip\
+Computer\HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\JDK\9.0.4\MSI
+  INSTALLDIR  C:\Program Files\Java\jdk-9.0.4\
+Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Apache Software Foundation\Procrun 2.0\Tomcat8\Parameters\Java
+  Jvm  C:\LocalApps\Java\jdk-11.0.9\bin\server\jvm.dll
+  JvmMs   80  (128)
+  JvmMx  100  (256)
+Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Apache Software Foundation\Procrun 2.0\Tomcat8\Parameters\Log
+  Path  C:\LocalApps\apache-tomcat-8.5.61\logs
+Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Apache Software Foundation\Procrun 2.0\Tomcat8\Parameters\Start
+  WorkingPath  C:\LocalApps\apache-tomcat-8.5.61
+
+06/29/2021  07:53 AM        30,136,688 gpg4win-3.1.16.exe
+06/29/2021  07:53 AM               876 gpg4win-3.1.16.exe.sig
+06/29/2021  07:54 AM                66 gpg4win-3.1.16.exe.sha256
+06/29/2021  07:55 AM       272,984,804 gpg4win-3.1.16.tar.bz2
+06/29/2021  07:56 AM               876 gpg4win-3.1.16.tar.bz2.sig
+06/29/2021  07:56 AM                66 gpg4win-3.1.16.tar.bz2.sha256
+06/29/2021  07:57 AM         3,688,311 gpg4win-compendium-en.pdf
+06/29/2021  07:57 AM             5,410 gpg4win-compendium.html
+
+C:\Users\David Holberton\Downloads>
+C:\Users\David Holberton\Downloads>certutil -hashfile gpg4win-3.1.16.exe SHA256
+SHA256 hash of gpg4win-3.1.16.exe:
+c499213ff3e14e93c3b245546994cc0e654ec267b40a188788665ae8f4e9f5ad
+CertUtil: -hashfile command completed successfully.
+
+C:\Users\David Holberton\Downloads>
+C:\Users\David Holberton\Downloads>type gpg4win-3.1.16.exe.sha256
+c499213ff3e14e93c3b245546994cc0e654ec267b40a188788665ae8f4e9f5ad
+
+C:\Users\David Holberton\Downloads>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+07/03/2021  05:11 PM    <DIR>          GnuPG
+07/03/2021  05:11 PM    <DIR>          Gpg4win
+               0 File(s)              0 bytes
+              35 Dir(s)   6,889,504,768 bytes free
+
+C:\Program Files (x86)>date /t
+Sat 07/03/2021
+
+C:\Program Files (x86)>time /t
+05:14 PM
+
+C:\Program Files (x86)>
+
+C:\Program Files (x86)\GnuPG>dir /o:gd
+ Volume in drive C has no label.
+ Volume Serial Number is 4603-A8D3
+
+ Directory of C:\Program Files (x86)\GnuPG
+
+07/03/2021  05:11 PM    <DIR>          share
+07/03/2021  05:11 PM    <DIR>          lib
+07/03/2021  05:11 PM    <DIR>          include
+07/03/2021  05:11 PM    <DIR>          bin
+07/03/2021  05:11 PM    <DIR>          .
+07/03/2021  05:11 PM    <DIR>          ..
+06/10/2021  01:25 PM            35,432 README.txt
+07/03/2021  05:11 PM                15 VERSION
+07/03/2021  05:11 PM           126,922 gnupg-uninstall.exe
+               3 File(s)        162,369 bytes
+               6 Dir(s)   6,891,089,920 bytes free
+
+C:\Program Files (x86)\GnuPG>
+
+C:\Program Files (x86)\Gpg4win>dir /o:gd
+ Volume in drive C has no label.
+ Volume Serial Number is 4603-A8D3
+
+ Directory of C:\Program Files (x86)\Gpg4win
+
+07/03/2021  05:11 PM    <DIR>          include
+07/03/2021  05:11 PM    <DIR>          bin_64
+07/03/2021  05:11 PM    <DIR>          etc
+07/03/2021  05:11 PM    <DIR>          lib
+07/03/2021  05:11 PM    <DIR>          bin
+07/03/2021  05:11 PM    <DIR>          share
+07/03/2021  05:11 PM    <DIR>          ..
+07/03/2021  05:11 PM    <DIR>          .
+07/03/2021  05:11 PM                16 VERSION
+07/03/2021  05:11 PM           270,160 gpg4win-uninstall.exe
+               2 File(s)        270,176 bytes
+               8 Dir(s)   6,888,853,504 bytes free
+
+C:\Program Files (x86)\Gpg4win>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+C:\Program Files (x86)\GnuPG\bin>
+C:\Program Files (x86)\GnuPG\bin>gpg --version
+gpg (GnuPG) 2.2.28
+libgcrypt 1.8.8
+Copyright (C) 2021 g10 Code GmbH
+License GNU GPL-3.0-or-later <https://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Home: C:/Users/David Holberton/AppData/Roaming/gnupg
+Supported algorithms:
+Pubkey: RSA, ELG, DSA, ECDH, ECDSA, EDDSA
+Cipher: IDEA, 3DES, CAST5, BLOWFISH, AES, AES192, AES256, TWOFISH,
+        CAMELLIA128, CAMELLIA192, CAMELLIA256
+Hash: SHA1, RIPEMD160, SHA256, SHA384, SHA512, SHA224
+Compression: Uncompressed, ZIP, ZLIB, BZIP2
+
+C:\Program Files (x86)\GnuPG\bin>
+C:\Program Files (x86)\GnuPG\bin>gpg --list-keys
+gpg: keybox 'C:/Users/David Holberton/AppData/Roaming/gnupg/pubring.kbx' created
+gpg: C:/Users/David Holberton/AppData/Roaming/gnupg/trustdb.gpg: trustdb created
+
+C:\Program Files (x86)\GnuPG\bin>
+C:\Program Files (x86)\GnuPG\bin>gpg --list-keys
+
+C:\Program Files (x86)\GnuPG\bin>
+C:\Program Files (x86)\GnuPG\bin>cd "C:/Users/David Holberton/AppData/Roaming/gnupg"
+
+C:\Users\David Holberton\AppData\Roaming\gnupg>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 4603-A8D3
+
+ Directory of C:\Users\David Holberton\AppData\Roaming\gnupg
+
+07/03/2021  05:21 PM    <DIR>          .
+07/03/2021  05:21 PM    <DIR>          ..
+07/03/2021  05:21 PM                32 pubring.kbx
+07/03/2021  05:21 PM                 0 pubring.kbx.lock
+07/03/2021  05:21 PM             1,200 trustdb.gpg
+07/03/2021  05:21 PM                 0 trustdb.gpg.lock
+               4 File(s)          1,232 bytes
+               2 Dir(s)   7,017,394,176 bytes free
+
+C:\Users\David Holberton\AppData\Roaming\gnupg>
+
+
+
+"I'm sorry, Dave. I'm afraid I can't do that."
+"Open the Pod bay doors HAL."
+
+Bill Gates
+"640K ought to be enough for anybody."
+
+Steve Jobs
+"reality distortion field"
+"just one more thing"
+
+
+
+
+
+
+
+
+
+
+
+  
+
+

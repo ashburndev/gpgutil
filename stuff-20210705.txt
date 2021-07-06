@@ -1,0 +1,327 @@
+8:40 AM 7/5/2021
+
+The GnuPG installation software added this to the end of the path system environment variable.  However, it does not appear to have added the xxx system environment variable.
+
+C:\Program Files (x86)\Gpg4win\..\GnuPG\bin
+
+When I do gpg --list-keys it appears to be showing the contents of
+
+C:/Users/David Holberton/AppData/Roaming/gnupg/pubring.kbx
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+PGP Command Line User's Guide 10.3
+https://usermanual.wiki/Document/pgpCmdline103usersen.626779542/help
+https://usermanual.wiki/Document/pgpCmdline103usersen.626779542/view  PDF file
+
+https://en.wikipedia.org/wiki/NortonLifeLock
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+https://gnupg.org/
+https://gnupg.org/download/
+https://gnupg.org/software/index.html
+https://gnupg.org/documentation/index.html
+
+https://www.gnupg.org/
+https://www.gnupg.org/software/index.html
+https://www.gnupg.org/download/index.html
+https://www.gnupg.org/faq/whats-new-in-2.1.html#nopgp2
+
+https://www.gpg4win.org/
+https://www.gpg4win.org/about.html
+https://www.gpg4win.org/version3.html
+https://www.gpg4win.org/get-gpg4win.html
+https://files.gpg4win.org/doc/gpg4win-compendium-en.pdf
+
+https://help.runbox.com/installing-gpg-on-microsoft-windows/
+http://www.ibiblio.org/shadow/pgp/install-gpg.pdf
+https://www.phildev.net/pgp/gpginstall.html
+https://en.wikipedia.org/wiki/GNU_Privacy_Guard
+https://ssd.eff.org/en/module/how-use-pgp-windows
+
+https://www.linuxbabe.com/security/a-practical-guide-to-gpg-part-1-generate-your-keypair
+https://www.linuxbabe.com/security/a-pratical-gpg-guide-part-2-encrypt-and-decrypt-message
+https://www.linuxbabe.com/security/a-practical-guide-to-gpg-part-3-working-with-public-key
+https://www.linuxbabe.com/security/a-practical-guide-to-gpg-part-4-digital-signature
+
+http://irtfweb.ifa.hawaii.edu/~lockhart/gpg/   gpg cheat sheet
+
+https://eng.wealthfront.com/2011/02/23/encrypting-using-gpg-from-java/
+https://docs.oracle.com/javase/7/docs/api/java/lang/ProcessBuilder.html
+https://www.baeldung.com/convert-array-to-list-and-list-to-array
+https://github.com/wkorando/sip-of-java/tree/main/009-string-join
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+C:\Users\David Holberton>
+C:\Users\David Holberton>gpg --full-gen-key
+gpg (GnuPG) 2.2.28; Copyright (C) 2021 g10 Code GmbH
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Please select what kind of key you want:
+   (1) RSA and RSA (default)
+   (2) DSA and Elgamal
+   (3) DSA (sign only)
+   (4) RSA (sign only)
+  (14) Existing key from card
+Your selection? 1
+RSA keys may be between 1024 and 4096 bits long.
+What keysize do you want? (3072) 4096
+Requested keysize is 4096 bits
+Please specify how long the key should be valid.
+         0 = key does not expire
+      <n>  = key expires in n days
+      <n>w = key expires in n weeks
+      <n>m = key expires in n months
+      <n>y = key expires in n years
+Key is valid for? (0) 0
+Key does not expire at all
+Is this correct? (y/N) y
+
+GnuPG needs to construct a user ID to identify your key.
+
+Real name: David Holberton
+Email address: dph@gmail.com
+Comment:
+You selected this USER-ID:
+    "David Holberton <dph@gmail.com>"
+
+Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? O
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+gpg: key 90A2D107CF1C45C4 marked as ultimately trusted
+gpg: directory 'C:/Users/David Holberton/AppData/Roaming/gnupg/openpgp-revocs.d' created
+gpg: revocation certificate stored as 'C:/Users/David Holberton/AppData/Roaming/gnupg/openpgp-revocs.d\14912E2F9B4D33703F5241ED90A2D107CF1C45C4.rev'
+public and secret key created and signed.
+
+pub   rsa4096 2021-07-05 [SC]
+      14912E2F9B4D33703F5241ED90A2D107CF1C45C4
+uid                      David Holberton <dph@gmail.com>
+sub   rsa4096 2021-07-05 [E]
+
+
+C:\Users\David Holberton>
+C:\Users\David Holberton>gpg --list-keys
+gpg: checking the trustdb
+gpg: marginals needed: 3  completes needed: 1  trust model: pgp
+gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
+C:/Users/David Holberton/AppData/Roaming/gnupg/pubring.kbx
+----------------------------------------------------------
+pub   rsa4096 2021-07-05 [SC]
+      14912E2F9B4D33703F5241ED90A2D107CF1C45C4
+uid           [ultimate] David Holberton <dph@gmail.com>
+sub   rsa4096 2021-07-05 [E]
+
+
+C:\Users\David Holberton>
+C:\Users\David Holberton>gpg --list-secret-keys
+C:/Users/David Holberton/AppData/Roaming/gnupg/pubring.kbx
+----------------------------------------------------------
+sec   rsa4096 2021-07-05 [SC]
+      14912E2F9B4D33703F5241ED90A2D107CF1C45C4
+uid           [ultimate] David Holberton <dph@gmail.com>
+ssb   rsa4096 2021-07-05 [E]
+
+
+C:\Users\David Holberton>
+C:\Users\David Holberton>gpg --list-sigs
+C:/Users/David Holberton/AppData/Roaming/gnupg/pubring.kbx
+----------------------------------------------------------
+pub   rsa4096 2021-07-05 [SC]
+      14912E2F9B4D33703F5241ED90A2D107CF1C45C4
+uid           [ultimate] David Holberton <dph@gmail.com>
+sig 3        90A2D107CF1C45C4 2021-07-05  David Holberton <dph@gmail.com>
+sub   rsa4096 2021-07-05 [E]
+sig          90A2D107CF1C45C4 2021-07-05  David Holberton <dph@gmail.com>
+
+
+C:\Users\David Holberton>
+C:\Users\David Holberton>gpg --fingerprint
+C:/Users/David Holberton/AppData/Roaming/gnupg/pubring.kbx
+----------------------------------------------------------
+pub   rsa4096 2021-07-05 [SC]
+      1491 2E2F 9B4D 3370 3F52  41ED 90A2 D107 CF1C 45C4
+uid           [ultimate] David Holberton <dph@gmail.com>
+sub   rsa4096 2021-07-05 [E]
+
+
+C:\Users\David Holberton>
+C:\Users\David Holberton>dir /o:gd AppData\Roaming\gnupg
+ Volume in drive C has no label.
+ Volume Serial Number is 4603-A8D3
+
+ Directory of C:\Users\David Holberton\AppData\Roaming\gnupg
+
+07/05/2021  03:15 PM    <DIR>          private-keys-v1.d
+07/05/2021  03:15 PM    <DIR>          openpgp-revocs.d
+07/05/2021  03:22 PM    <DIR>          ..
+07/05/2021  03:22 PM    <DIR>          .
+07/03/2021  05:21 PM                 0 pubring.kbx.lock
+07/03/2021  05:21 PM                32 pubring.kb_
+07/03/2021  05:21 PM                 0 trustdb.gpg.lock
+07/05/2021  03:14 PM                 0 gnupg_spawn_agent_sentinel.lock
+07/05/2021  03:14 PM                22 S.gpg-agent
+07/05/2021  03:14 PM                22 S.gpg-agent.extra
+07/05/2021  03:14 PM                22 S.gpg-agent.browser
+07/05/2021  03:14 PM                22 S.gpg-agent.ssh
+07/05/2021  03:15 PM             2,473 pubring.kbx
+07/05/2021  03:16 PM             1,280 trustdb.gpg
+              10 File(s)          3,873 bytes
+               4 Dir(s)  52,868,988,928 bytes free
+
+C:\Users\David Holberton>
+C:\Users\David Holberton>gpg --export -a "David Holberton" > dh-public-key.asc
+
+C:\Users\David Holberton>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+C:\Users\David Holberton>mkdir gpgtemp1
+
+C:\Users\David Holberton>gpg --full-gen-key --homedir "C:\Users\David Holberton\gpgtemp1"
+gpg (GnuPG) 2.2.28; Copyright (C) 2021 g10 Code GmbH
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+gpg: keybox 'C:/Users/David Holberton/gpgtemp1/pubring.kbx' created
+Please select what kind of key you want:
+   (1) RSA and RSA (default)
+   (2) DSA and Elgamal
+   (3) DSA (sign only)
+   (4) RSA (sign only)
+  (14) Existing key from card
+Your selection? 1
+RSA keys may be between 1024 and 4096 bits long.
+What keysize do you want? (3072) 4096
+Requested keysize is 4096 bits
+Please specify how long the key should be valid.
+         0 = key does not expire
+      <n>  = key expires in n days
+      <n>w = key expires in n weeks
+      <n>m = key expires in n months
+      <n>y = key expires in n years
+Key is valid for? (0) 0
+Key does not expire at all
+Is this correct? (y/N) y
+
+GnuPG needs to construct a user ID to identify your key.
+
+Real name: James Bond
+Email address: agent007@mi6.gov
+Comment:
+You selected this USER-ID:
+    "James Bond <agent007@mi6.gov>"
+
+Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? o
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+gpg: C:/Users/David Holberton/gpgtemp1/trustdb.gpg: trustdb created
+gpg: key 378549D87A82554F marked as ultimately trusted
+gpg: directory 'C:/Users/David Holberton/gpgtemp1/openpgp-revocs.d' created
+gpg: revocation certificate stored as 'C:/Users/David Holberton/gpgtemp1/openpgp-revocs.d\E3D6F0B4BFE739B74B822001378549D87A82554F.rev'
+public and secret key created and signed.
+
+pub   rsa4096 2021-07-05 [SC]
+      E3D6F0B4BFE739B74B822001378549D87A82554F
+uid                      James Bond <agent007@mi6.gov>
+sub   rsa4096 2021-07-05 [E]
+
+
+C:\Users\David Holberton>
+C:\Users\David Holberton>dir /o:gd gpgtemp1
+ Volume in drive C has no label.
+ Volume Serial Number is 4603-A8D3
+
+ Directory of C:\Users\David Holberton\gpgtemp1
+
+07/05/2021  03:36 PM    <DIR>          private-keys-v1.d
+07/05/2021  03:36 PM    <DIR>          ..
+07/05/2021  03:36 PM    <DIR>          .
+07/05/2021  03:36 PM    <DIR>          openpgp-revocs.d
+07/05/2021  03:33 PM                 0 pubring.kbx.lock
+07/05/2021  03:33 PM                32 pubring.kb_
+07/05/2021  03:34 PM                 0 gnupg_spawn_agent_sentinel.lock
+07/05/2021  03:34 PM                22 S.gpg-agent
+07/05/2021  03:34 PM                22 S.gpg-agent.extra
+07/05/2021  03:34 PM                22 S.gpg-agent.browser
+07/05/2021  03:34 PM                22 S.gpg-agent.ssh
+07/05/2021  03:36 PM             2,471 pubring.kbx
+07/05/2021  03:36 PM                 0 trustdb.gpg.lock
+07/05/2021  03:36 PM             1,240 trustdb.gpg
+              10 File(s)          3,831 bytes
+               4 Dir(s)  52,873,441,280 bytes free
+
+C:\Users\David Holberton>
+C:\Users\David Holberton>
+C:\Users\David Holberton>gpg --list-keys
+C:/Users/David Holberton/AppData/Roaming/gnupg/pubring.kbx
+----------------------------------------------------------
+pub   rsa4096 2021-07-05 [SC]
+      14912E2F9B4D33703F5241ED90A2D107CF1C45C4
+uid           [ultimate] David Holberton <dph@gmail.com>
+sub   rsa4096 2021-07-05 [E]
+
+
+C:\Users\David Holberton>
+C:\Users\David Holberton>gpg --list-keys --homedir "C:\Users\David Holberton\gpgtemp1"
+gpg: checking the trustdb
+gpg: marginals needed: 3  completes needed: 1  trust model: pgp
+gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
+C:/Users/David Holberton/gpgtemp1/pubring.kbx
+---------------------------------------------
+pub   rsa4096 2021-07-05 [SC]
+      E3D6F0B4BFE739B74B822001378549D87A82554F
+uid           [ultimate] James Bond <agent007@mi6.gov>
+sub   rsa4096 2021-07-05 [E]
+
+
+C:\Users\David Holberton>gpg --list-secret-keys --homedir "C:\Users\David Holberton\gpgtemp1"
+C:/Users/David Holberton/gpgtemp1/pubring.kbx
+---------------------------------------------
+sec   rsa4096 2021-07-05 [SC]
+      E3D6F0B4BFE739B74B822001378549D87A82554F
+uid           [ultimate] James Bond <agent007@mi6.gov>
+ssb   rsa4096 2021-07-05 [E]
+
+
+C:\Users\David Holberton>gpg --list-sigs --homedir "C:\Users\David Holberton\gpgtemp1"
+C:/Users/David Holberton/gpgtemp1/pubring.kbx
+---------------------------------------------
+pub   rsa4096 2021-07-05 [SC]
+      E3D6F0B4BFE739B74B822001378549D87A82554F
+uid           [ultimate] James Bond <agent007@mi6.gov>
+sig 3        378549D87A82554F 2021-07-05  James Bond <agent007@mi6.gov>
+sub   rsa4096 2021-07-05 [E]
+sig          378549D87A82554F 2021-07-05  James Bond <agent007@mi6.gov>
+
+
+C:\Users\David Holberton>gpg --fingerprint --homedir "C:\Users\David Holberton\gpgtemp1"
+C:/Users/David Holberton/gpgtemp1/pubring.kbx
+---------------------------------------------
+pub   rsa4096 2021-07-05 [SC]
+      E3D6 F0B4 BFE7 39B7 4B82  2001 3785 49D8 7A82 554F
+uid           [ultimate] James Bond <agent007@mi6.gov>
+sub   rsa4096 2021-07-05 [E]
+
+
+C:\Users\David Holberton>
+C:\Users\David Holberton>
+
+
+
+
+

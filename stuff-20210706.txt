@@ -1,0 +1,236 @@
+5:27 AM 7/6/2021
+
+Microsoft Windows [Version 10.0.19042.1052]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\David Holberton>date /t
+Tue 07/06/2021
+
+C:\Users\David Holberton>time /t
+05:31 AM
+
+C:\Users\David Holberton>set | findstr /i "home"
+ANT_HOME=C:\LocalApps\apache-ant-1.10.5
+ECLIPSE_HOME=C:\LocalApps\eclipse-jee-2020-12-R-win32-x86_64
+GNUPGHOME=C:\Users\David Holberton\gpgtemp1
+GRADLE_HOME=C:\LocalApps\gradle-6.9
+GRAILS_HOME=C:\LocalApps\grails-2.1.1
+GROOVY_HOME=C:\LocalApps\groovy-3.0.7
+HOMEDRIVE=C:
+HOMEPATH=\Users\David Holberton
+IDEAIU_HOME=C:\LocalApps\ideaIU-2021.1.1.win
+JAVA_HOME=C:\LocalApps\Java\jdk-16
+JAVA_HOME_10=C:\LocalApps\Java\jdk-10.0.1
+JAVA_HOME_11=C:\LocalApps\Java\jdk-11.0.10
+JAVA_HOME_14=C:\LocalApps\Java\jdk-14.0.1
+JAVA_HOME_16=C:\LocalApps\Java\jdk-16
+JAVA_HOME_7=C:\LocalApps\Java\jdk1.7.0_79
+JAVA_HOME_8=C:\LocalApps\Java\jdk1.8.0_281
+JAVA_HOME_9=C:\LocalApps\Java\jdk-9.0.4
+M2_HOME=C:\LocalApps\apache-maven-3.6.0
+MAVEN_HOME=C:\LocalApps\apache-maven-3.6.0
+MYSQL_HOME=C:\mysql
+SUBLIME_HOME=C:\LocalApps\sublimetext3
+TOMCAT_HOME=C:\LocalApps\apache-tomcat-8.5.31
+VSCODE_HOME=C:\LocalApps\VSCode-win32-x64-1.56.0
+
+C:\Users\David Holberton>
+C:\Users\David Holberton\gpgtemp1>gpg --version
+gpg (GnuPG) 2.2.28
+libgcrypt 1.8.8
+Copyright (C) 2021 g10 Code GmbH
+License GNU GPL-3.0-or-later <https://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Home: C:/Users/David Holberton/gpgtemp1
+Supported algorithms:
+Pubkey: RSA, ELG, DSA, ECDH, ECDSA, EDDSA
+Cipher: IDEA, 3DES, CAST5, BLOWFISH, AES, AES192, AES256, TWOFISH,
+        CAMELLIA128, CAMELLIA192, CAMELLIA256
+Hash: SHA1, RIPEMD160, SHA256, SHA384, SHA512, SHA224
+Compression: Uncompressed, ZIP, ZLIB, BZIP2
+
+C:\Users\David Holberton\gpgtemp1>
+C:\Users\David Holberton\gpgtemp1>gpg --armor --export "James Bond" > jb-public-key.asc
+
+C:\Users\David Holberton\gpgtemp1>
+C:\Users\David Holberton\gpgtemp1>dir /o:gd
+ Volume in drive C has no label.
+ Volume Serial Number is 4603-A8D3
+
+ Directory of C:\Users\David Holberton\gpgtemp1
+
+07/05/2021  03:36 PM    <DIR>          private-keys-v1.d
+07/05/2021  03:36 PM    <DIR>          openpgp-revocs.d
+07/06/2021  05:37 AM    <DIR>          ..
+07/06/2021  05:37 AM    <DIR>          .
+07/05/2021  12:34 PM               294 dickens.txt
+07/05/2021  03:33 PM                 0 pubring.kbx.lock
+07/05/2021  03:33 PM                32 pubring.kb_
+07/05/2021  03:34 PM                 0 gnupg_spawn_agent_sentinel.lock
+07/05/2021  03:34 PM                22 S.gpg-agent
+07/05/2021  03:34 PM                22 S.gpg-agent.extra
+07/05/2021  03:34 PM                22 S.gpg-agent.browser
+07/05/2021  03:34 PM                22 S.gpg-agent.ssh
+07/05/2021  03:36 PM             2,471 pubring.kbx
+07/05/2021  03:36 PM                 0 trustdb.gpg.lock
+07/05/2021  03:40 PM             1,280 trustdb.gpg
+07/06/2021  05:35 AM             3,177 jb-public-key.asc
+              12 File(s)          7,342 bytes
+               4 Dir(s)  53,152,911,360 bytes free
+
+C:\Users\David Holberton\gpgtemp1>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+Microsoft Windows [Version 10.0.19042.1052]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\David Holberton>pgp --list-keys
+'pgp' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\David Holberton>gpg --list-keys
+C:/Users/David Holberton/AppData/Roaming/gnupg/pubring.kbx
+----------------------------------------------------------
+pub   rsa4096 2021-07-05 [SC]
+      14912E2F9B4D33703F5241ED90A2D107CF1C45C4
+uid           [ultimate] David Holberton <dph@gmail.com>
+sub   rsa4096 2021-07-05 [E]
+
+
+C:\Users\David Holberton>gpg --import "C:\Users\David Holberton\gpgtemp1\jb-public-key.asc"
+gpg: key 378549D87A82554F: public key "James Bond <agent007@mi6.gov>" imported
+gpg: Total number processed: 1
+gpg:               imported: 1
+
+C:\Users\David Holberton>gpg --list-keys
+C:/Users/David Holberton/AppData/Roaming/gnupg/pubring.kbx
+----------------------------------------------------------
+pub   rsa4096 2021-07-05 [SC]
+      14912E2F9B4D33703F5241ED90A2D107CF1C45C4
+uid           [ultimate] David Holberton <dph@gmail.com>
+sub   rsa4096 2021-07-05 [E]
+
+pub   rsa4096 2021-07-05 [SC]
+      E3D6F0B4BFE739B74B822001378549D87A82554F
+uid           [ unknown] James Bond <agent007@mi6.gov>
+sub   rsa4096 2021-07-05 [E]
+
+
+C:\Users\David Holberton>
+C:\Users\David Holberton>type dickens.txt
+It was the best of times, it was the worst of times,
+it was the age of wisdom, it was the age of foolishness,
+it was the epoch of belief, it was the epoch of incredulity,
+it was the season of light, it was the season of darkness,
+it was the spring of hope, it was the winter of despair.
+
+
+C:\Users\David Holberton>gpg --clearsign dickens.txt
+
+C:\Users\David Holberton>
+C:\Users\David Holberton>
+C:\Users\David Holberton>dir /o:gd dickens*
+ Volume in drive C has no label.
+ Volume Serial Number is 4603-A8D3
+
+ Directory of C:\Users\David Holberton
+
+07/05/2021  12:34 PM               294 dickens.txt
+07/05/2021  12:34 PM               294 dickens-backup.txt
+07/06/2021  05:46 AM             1,195 dickens.txt.asc
+               3 File(s)          1,783 bytes
+               0 Dir(s)  53,152,415,744 bytes free
+
+C:\Users\David Holberton>
+C:\Users\David Holberton>type dickens.txt.asc
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+It was the best of times, it was the worst of times,
+it was the age of wisdom, it was the age of foolishness,
+it was the epoch of belief, it was the epoch of incredulity,
+it was the season of light, it was the season of darkness,
+it was the spring of hope, it was the winter of despair.
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEFJEuL5tNM3A/UkHtkKLRB88cRcQFAmDkJnoACgkQkKLRB88c
+RcR4yw/+KUXMSUTMqlujtozujtzfbQRC7CPAvxkhHe/lQNIBSPavfzbCbf+gVhQo
+Y+2UFsuDhDAr7zFUvqOn76qi6FLi+wIz79IjqBcG6E+EUg1elSQArVF+S0Nz1XQe
+Gbl82UCQf7MYxd3W2wIcbBE6+iFpdc+CJCQx/T2ONsLaozVk8pgwNPT8JlkpgkV+
+D8DNhu++qLD+soJ/v2FgNwjJFgdHAPDoi79KNgsa5y+eKPPN+unEYBZCaT7q8upW
+vF7KFqTKO2e8fC2ftpUNZjB50Cd1lFG/idfHW4VbACi05wJXgYu8KgeYXrPc40c9
+u3OLMAXuHUID+0rRENKvjS7QQ7L+tkLU4zWCT516Gu4c+1hqs1N//6J+WHvRkIco
+k6Tmf+CfDTAixT155busrok6eit3AQyv9uMfPhQGw3s7DQaxd4+vMiZqbLGnluAp
+eHwkDW9uZVhgQ77wViDQdvC96Ynpn/fMVpogMyHa4kDVaoCJsIz25KiodITGFdN0
+qV4T0eVeXbP/W1CNuCkZh07FCLB59uL5Qd60oALgKTxeZtFochyq/Xp68/vQC26z
+xOEXbdko26jZHriYsZ4kLWrxi7I/1KEKmuaRnmawWSdAduSdETTewjg0WihIf8z/
+GFbmmKeJc+HUPzsJ0O2jClbFuGRF4zopqA7/GCAErvV8BJfhBeI=
+=sAwR
+-----END PGP SIGNATURE-----
+
+C:\Users\David Holberton>
+C:\Users\David Holberton>gpg --recipient "James Bond" --encrypt dickens.txt
+gpg: 3EAD581B2DF09759: There is no assurance this key belongs to the named user
+
+sub  rsa4096/3EAD581B2DF09759 2021-07-05 James Bond <agent007@mi6.gov>
+ Primary key fingerprint: E3D6 F0B4 BFE7 39B7 4B82  2001 3785 49D8 7A82 554F
+      Subkey fingerprint: 3606 B61E 40B7 02C3 AF64  12BB 3EAD 581B 2DF0 9759
+
+It is NOT certain that the key belongs to the person named
+in the user ID.  If you *really* know what you are doing,
+you may answer the next question with yes.
+
+Use this key anyway? (y/N) y
+
+C:\Users\David Holberton>dir /o:gd dickens*
+ Volume in drive C has no label.
+ Volume Serial Number is 4603-A8D3
+
+ Directory of C:\Users\David Holberton
+
+07/05/2021  12:34 PM               294 dickens.txt
+07/05/2021  12:34 PM               294 dickens-backup.txt
+07/06/2021  05:46 AM             1,195 dickens.txt.asc
+07/06/2021  05:52 AM               734 dickens.txt.gpg
+               4 File(s)          2,517 bytes
+               0 Dir(s)  53,150,834,688 bytes free
+
+C:\Users\David Holberton>
+C:\Users\David Holberton>type melville.txt
+Call me Ishmael. Some years ago—never mind how long
+precisely—having little or no money in my purse,
+and nothing particular to interest me on shore,
+I thought I would sail about a little and see the
+watery part of the world.
+
+C:\Users\David Holberton>
+C:\Users\David Holberton>gpg --recipient "James Bond" --encrypt melville.txt
+gpg: 3EAD581B2DF09759: There is no assurance this key belongs to the named user
+
+sub  rsa4096/3EAD581B2DF09759 2021-07-05 James Bond <agent007@mi6.gov>
+ Primary key fingerprint: E3D6 F0B4 BFE7 39B7 4B82  2001 3785 49D8 7A82 554F
+      Subkey fingerprint: 3606 B61E 40B7 02C3 AF64  12BB 3EAD 581B 2DF0 9759
+
+It is NOT certain that the key belongs to the person named
+in the user ID.  If you *really* know what you are doing,
+you may answer the next question with yes.
+
+Use this key anyway? (y/N) y
+
+C:\Users\David Holberton>dir /o:gd melville*
+ Volume in drive C has no label.
+ Volume Serial Number is 4603-A8D3
+
+ Directory of C:\Users\David Holberton
+
+07/06/2021  05:57 AM               234 melville.txt
+07/06/2021  06:05 AM               770 melville.txt.gpg
+               2 File(s)          1,004 bytes
+               0 Dir(s)  53,151,924,224 bytes free
+
+C:\Users\David Holberton>
+
