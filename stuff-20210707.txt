@@ -1,0 +1,249 @@
+8:44 AM 7/7/2021
+
+https://unix.stackexchange.com/questions/60213/gpg-asks-for-password-even-with-passphrase
+
+gpg --decrypt --pinentry-mode loopback --passphrase-file password.txt --batch file.gpg
+
+https://www.linuxbabe.com/security/a-practical-guide-to-gpg-part-4-digital-signature
+
+Signing and Encrypting
+
+If we want to make sure that the authencitiy of the sender is checked as well as the integrity of the encrypted message and we want to provide confidentiality, use the below command:
+
+gpg --armor --recipient <user-id> -e --sign <filename>
+
+Output:
+
+You need a passphrase to unlock the secret key for
+user: "Xiao Guoan <xiao@linuxdashen.com>"
+2048-bit RSA key, ID 0F8BBD66, created 2016-02-02
+Enter passphrase:
+
+You need to enter your passphrase to unlock private key. It combines the commands to sign and encrypt in one step. It first sign the docuement with your private key, then encrypt it with the recipient’s public key.
+
+First it’s going to sign the message because we want the hash caculated with raw file, not the encrypted file. Then the hash is signed with our private key.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+gpg --armor --recipient "James Bond" -e --sign melville2.txt
+gpg --recipient "James Bond" -e --sign melville3.txt
+gpg --armor --recipient "James Bond" -e --sign melville4.txt --passphrase "WriteOnceRunAnywhere"
+gpg --armor --recipient "James Bond" -e --sign --passphrase "WriteOnceRunAnywhere" melville4.txt
+gpg --armor --recipient "James Bond" -e --sign --passphrase-file password.txt melville5.txt
+gpg --armor --recipient "James Bond" -e --sign --passphrase-file passphrase.txt melville5.txt
+
+
+
+C:\Users\David Holberton>copy melville.txt melville2.txt
+        1 file(s) copied.
+
+C:\Users\David Holberton>gpg --armor --recipient "James Bond" -e --sign melville2.txt
+gpg: 3EAD581B2DF09759: There is no assurance this key belongs to the named user
+
+sub  rsa4096/3EAD581B2DF09759 2021-07-05 James Bond <agent007@mi6.gov>
+ Primary key fingerprint: E3D6 F0B4 BFE7 39B7 4B82  2001 3785 49D8 7A82 554F
+      Subkey fingerprint: 3606 B61E 40B7 02C3 AF64  12BB 3EAD 581B 2DF0 9759
+
+It is NOT certain that the key belongs to the person named
+in the user ID.  If you *really* know what you are doing,
+you may answer the next question with yes.
+
+Use this key anyway? (y/N) y
+
+C:\Users\David Holberton>
+
+07/04/2021  01:17 PM         5,129,481 GnuPG.zip
+07/04/2021  01:18 PM        25,548,824 Gpg4win.zip
+07/04/2021  01:28 PM             3,259 stuff-20210704.txt
+07/05/2021  12:34 PM               294 dickens.txt
+07/05/2021  12:34 PM               294 dickens-backup.txt
+07/05/2021  03:49 PM             3,181 dh-public-key.asc
+07/05/2021  03:49 PM            13,149 stuff-20210705.txt
+07/06/2021  05:46 AM             1,195 dickens.txt.asc
+07/06/2021  05:52 AM               734 dickens.txt.gpg
+07/06/2021  05:57 AM               234 melville.txt
+07/06/2021  05:57 AM               234 melville2.txt
+07/06/2021  06:05 AM               770 melville.txt.gpg
+07/06/2021  06:08 AM             9,181 stuff-20210706.txt
+07/07/2021  08:47 AM             2,005 melville2.txt.asc
+              86 File(s)     32,886,900 bytes
+              62 Dir(s)  52,887,715,840 bytes free
+
+C:\Users\David Holberton>
+C:\Users\David Holberton>copy melville.txt melville3.txt
+        1 file(s) copied.
+
+C:\Users\David Holberton>gpg --recipient "James Bond" -e --sign melville3.txt
+gpg: 3EAD581B2DF09759: There is no assurance this key belongs to the named user
+
+sub  rsa4096/3EAD581B2DF09759 2021-07-05 James Bond <agent007@mi6.gov>
+ Primary key fingerprint: E3D6 F0B4 BFE7 39B7 4B82  2001 3785 49D8 7A82 554F
+      Subkey fingerprint: 3606 B61E 40B7 02C3 AF64  12BB 3EAD 581B 2DF0 9759
+
+It is NOT certain that the key belongs to the person named
+in the user ID.  If you *really* know what you are doing,
+you may answer the next question with yes.
+
+Use this key anyway? (y/N) y
+
+C:\Users\David Holberton>
+07/04/2021  01:17 PM         5,129,481 GnuPG.zip
+07/04/2021  01:18 PM        25,548,824 Gpg4win.zip
+07/04/2021  01:28 PM             3,259 stuff-20210704.txt
+07/05/2021  12:34 PM               294 dickens.txt
+07/05/2021  12:34 PM               294 dickens-backup.txt
+07/05/2021  03:49 PM             3,181 dh-public-key.asc
+07/05/2021  03:49 PM            13,149 stuff-20210705.txt
+07/06/2021  05:46 AM             1,195 dickens.txt.asc
+07/06/2021  05:52 AM               734 dickens.txt.gpg
+07/06/2021  05:57 AM               234 melville.txt
+07/06/2021  05:57 AM               234 melville3.txt
+07/06/2021  05:57 AM               234 melville2.txt
+07/06/2021  06:05 AM               770 melville.txt.gpg
+07/06/2021  06:08 AM             9,181 stuff-20210706.txt
+07/07/2021  08:47 AM             2,005 melville2.txt.asc
+07/07/2021  08:51 AM             1,410 melville3.txt.gpg
+              88 File(s)     32,888,544 bytes
+              62 Dir(s)  52,897,914,880 bytes free
+
+C:\Users\David Holberton>
+C:\Users\David Holberton>copy melville.txt melville4.txt
+        1 file(s) copied.
+
+C:\Users\David Holberton>gpg --armor --recipient "James Bond" -e --sign melville4.txt --passphrase "WriteOnceRunAnywhere"
+gpg: Note: '--passphrase' is not considered an option
+usage: gpg [options] --sign --encrypt [filename]
+
+C:\Users\David Holberton>
+C:\Users\David Holberton>notepad passphrase.txt
+
+C:\Users\David Holberton>gpg --armor --recipient "James Bond" -e --sign --passphrase "WriteOnceRunAnywhere" melville4.txt
+gpg: 3EAD581B2DF09759: There is no assurance this key belongs to the named user
+
+sub  rsa4096/3EAD581B2DF09759 2021-07-05 James Bond <agent007@mi6.gov>
+ Primary key fingerprint: E3D6 F0B4 BFE7 39B7 4B82  2001 3785 49D8 7A82 554F
+      Subkey fingerprint: 3606 B61E 40B7 02C3 AF64  12BB 3EAD 581B 2DF0 9759
+
+It is NOT certain that the key belongs to the person named
+in the user ID.  If you *really* know what you are doing,
+you may answer the next question with yes.
+
+Use this key anyway? (y/N) y
+
+C:\Users\David Holberton>
+C:\Users\David Holberton>gpg --armor --recipient "James Bond" -e --sign --passphrase "WriteOnceRunAnywhere" melville4.txt
+gpg: 3EAD581B2DF09759: There is no assurance this key belongs to the named user
+
+sub  rsa4096/3EAD581B2DF09759 2021-07-05 James Bond <agent007@mi6.gov>
+ Primary key fingerprint: E3D6 F0B4 BFE7 39B7 4B82  2001 3785 49D8 7A82 554F
+      Subkey fingerprint: 3606 B61E 40B7 02C3 AF64  12BB 3EAD 581B 2DF0 9759
+
+It is NOT certain that the key belongs to the person named
+in the user ID.  If you *really* know what you are doing,
+you may answer the next question with yes.
+
+Use this key anyway? (y/N) y
+File 'melville4.txt.asc' exists. Overwrite? (y/N) y
+
+C:\Users\David Holberton>
+C:\Users\David Holberton>notepad passphrase.txt
+
+C:\Users\David Holberton>copy melville.txt melville5.txt
+        1 file(s) copied.
+
+C:\Users\David Holberton>
+C:\Users\David Holberton>gpg --armor --recipient "James Bond" -e --sign --passphrase-file password.txt melville5.txt
+gpg: can't open 'password.txt': No such file or directory
+
+C:\Users\David Holberton>gpg --armor --recipient "James Bond" -e --sign --passphrase-file passphrase.txt melville5.txt
+gpg: 3EAD581B2DF09759: There is no assurance this key belongs to the named user
+
+sub  rsa4096/3EAD581B2DF09759 2021-07-05 James Bond <agent007@mi6.gov>
+ Primary key fingerprint: E3D6 F0B4 BFE7 39B7 4B82  2001 3785 49D8 7A82 554F
+      Subkey fingerprint: 3606 B61E 40B7 02C3 AF64  12BB 3EAD 581B 2DF0 9759
+
+It is NOT certain that the key belongs to the person named
+in the user ID.  If you *really* know what you are doing,
+you may answer the next question with yes.
+
+Use this key anyway? (y/N) y
+
+C:\Users\David Holberton>
+07/04/2021  01:17 PM         5,129,481 GnuPG.zip
+07/04/2021  01:18 PM        25,548,824 Gpg4win.zip
+07/04/2021  01:28 PM             3,259 stuff-20210704.txt
+07/05/2021  12:34 PM               294 dickens-backup.txt
+07/05/2021  12:34 PM               294 dickens.txt
+07/05/2021  03:49 PM             3,181 dh-public-key.asc
+07/05/2021  03:49 PM            13,149 stuff-20210705.txt
+07/06/2021  05:46 AM             1,195 dickens.txt.asc
+07/06/2021  05:52 AM               734 dickens.txt.gpg
+07/06/2021  05:57 AM               234 melville2.txt
+07/06/2021  05:57 AM               234 melville3.txt
+07/06/2021  05:57 AM               234 melville5.txt
+07/06/2021  05:57 AM               234 melville.txt
+07/06/2021  05:57 AM               234 melville4.txt
+07/06/2021  06:05 AM               770 melville.txt.gpg
+07/06/2021  06:08 AM             9,181 stuff-20210706.txt
+07/07/2021  08:47 AM             2,005 melville2.txt.asc
+07/07/2021  08:51 AM             1,410 melville3.txt.gpg
+07/07/2021  09:16 AM             2,005 melville4.txt.asc
+07/07/2021  09:16 AM                22 passphrase.txt
+07/07/2021  09:23 AM             2,009 melville5.txt.asc
+07/07/2021  09:24 AM             7,846 stuff-20210707.txt
+              94 File(s)     32,900,894 bytes
+              62 Dir(s)  52,904,259,584 bytes free
+
+C:\Users\David Holberton>
+C:\Users\David Holberton>type dickens.txt.asc
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+It was the best of times, it was the worst of times,
+it was the age of wisdom, it was the age of foolishness,
+it was the epoch of belief, it was the epoch of incredulity,
+it was the season of light, it was the season of darkness,
+it was the spring of hope, it was the winter of despair.
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEFJEuL5tNM3A/UkHtkKLRB88cRcQFAmDkJnoACgkQkKLRB88c
+RcR4yw/+KUXMSUTMqlujtozujtzfbQRC7CPAvxkhHe/lQNIBSPavfzbCbf+gVhQo
+Y+2UFsuDhDAr7zFUvqOn76qi6FLi+wIz79IjqBcG6E+EUg1elSQArVF+S0Nz1XQe
+Gbl82UCQf7MYxd3W2wIcbBE6+iFpdc+CJCQx/T2ONsLaozVk8pgwNPT8JlkpgkV+
+D8DNhu++qLD+soJ/v2FgNwjJFgdHAPDoi79KNgsa5y+eKPPN+unEYBZCaT7q8upW
+vF7KFqTKO2e8fC2ftpUNZjB50Cd1lFG/idfHW4VbACi05wJXgYu8KgeYXrPc40c9
+u3OLMAXuHUID+0rRENKvjS7QQ7L+tkLU4zWCT516Gu4c+1hqs1N//6J+WHvRkIco
+k6Tmf+CfDTAixT155busrok6eit3AQyv9uMfPhQGw3s7DQaxd4+vMiZqbLGnluAp
+eHwkDW9uZVhgQ77wViDQdvC96Ynpn/fMVpogMyHa4kDVaoCJsIz25KiodITGFdN0
+qV4T0eVeXbP/W1CNuCkZh07FCLB59uL5Qd60oALgKTxeZtFochyq/Xp68/vQC26z
+xOEXbdko26jZHriYsZ4kLWrxi7I/1KEKmuaRnmawWSdAduSdETTewjg0WihIf8z/
+GFbmmKeJc+HUPzsJ0O2jClbFuGRF4zopqA7/GCAErvV8BJfhBeI=
+=sAwR
+-----END PGP SIGNATURE-----
+
+C:\Users\David Holberton>gpg --verify dickens.txt.asc
+gpg: Signature made 7/6/2021 5:46:34 AM Eastern Daylight Time
+gpg:                using RSA key 14912E2F9B4D33703F5241ED90A2D107CF1C45C4
+gpg: Good signature from "David Holberton <dph@gmail.com>" [ultimate]
+gpg: WARNING: not a detached signature; file 'dickens.txt' was NOT verified!
+
+C:\Users\David Holberton>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
