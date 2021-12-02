@@ -21,7 +21,8 @@ public class GpgUtil {
     public static final String GPG_KEY_DIR = "C:\\gpg\\keys-dh";
     // public static final String GPG_KEY_DIR = "C:\\gpg\\keys-jb";
     // public static final String GPG_BIN_PATH = "C:\\gpg\\GnuPG\\bin\\gpg.exe";    // works fine
-    public static final String GPG_BIN_PATH = "C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe";    // also works fine
+    // public static final String GPG_BIN_PATH = "C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe";    // also works fine
+    public static final String GPG_BIN_PATH = "gpg";    // also works fine
     public static final String GPG_SENDER_USERNAME = "David Holberton <dph@gmail.com";
     public static final String GPG_SENDER_PASSPHRASE = "WriteOnceRunAnywhere";
     // public static final String GPG_RECIPIENT_USERNAME = "James Bond <agent007@mi6.gov";    // works fine
@@ -37,15 +38,72 @@ public class GpgUtil {
                     "it was the season of light, it was the season of darkness,\n" +
                     "it was the spring of hope, it was the winter of despair.";
 
+    // spaces in the directory name cause problems for the generated command line string
+    //    public static final String GPG_VERIFY_ORIG_FILENAME = "C:\\Users\\David Holberton\\Downloads\\gpgtempdir\\VSCodeUserSetup-x64-1.62.3.exe";
+    //    public static final String GPG_VERIFY_SIG_FILENAME = "C:\\Users\\David Holberton\\Downloads\\gpgtempdir\\VSCodeUserSetup-x64-1.62.3.exe.sig";
+    //    public static final String GPG_VERIFY_ASC_FILENAME = "C:\\Users\\David Holberton\\Downloads\\gpgtempdir\\VSCodeUserSetup-x64-1.62.3.exe.asc";
+
+    // I am expecting something very much like the following for testVerify, but getting an empty byte array instead
+    //    C:\Users\David Holberton\Downloads\gpgtempdir>gpg --no-tty --batch --yes --always-trust --verify C:\gpgtempdir\VSCodeUserSetup-x64-1.62.3.exe.asc C:\gpgtempdir\VSCodeUserSetup-x64-1.62.3.exe
+    //    gpg: Signature made 11/29/2021 8:32:25 AM Eastern Standard Time
+    //    gpg:                using RSA key 14912E2F9B4D33703F5241ED90A2D107CF1C45C4
+    //    gpg: Good signature from "David Holberton <dph@gmail.com>" [unknown]
+    //    gpg: WARNING: Using untrusted key!
+    //
+    //    C:\Users\David Holberton\Downloads\gpgtempdir>
+
+    public static final String GPG_VERIFY_ORIG_FILENAME = "C:\\gpgtempdir\\VSCodeUserSetup-x64-1.62.3.exe";
+    public static final String GPG_VERIFY_SIG_FILENAME = "C:\\gpgtempdir\\VSCodeUserSetup-x64-1.62.3.exe.sig";
+    public static final String GPG_VERIFY_ASC_FILENAME = "C:\\gpgtempdir\\VSCodeUserSetup-x64-1.62.3.exe.asc";
+
     public static void main(String[] args) {
         System.out.println("Hello GPG");
         GpgUtil gpgUtil = new GpgUtil();
         gpgUtil.testVersion();
         gpgUtil.testListKeys();
+        gpgUtil.testVerify();
         gpgUtil.testEncrypt(GPG_RECIPIENT_USERNAME, DICKENS_QUOTE);
     }
 
+    // I am expecting something very much like the following for testVerify, but getting an empty byte array instead
+    //    C:\Users\David Holberton\Downloads\gpgtempdir>gpg --no-tty --batch --yes --always-trust --verify C:\gpgtempdir\VSCodeUserSetup-x64-1.62.3.exe.asc C:\gpgtempdir\VSCodeUserSetup-x64-1.62.3.exe
+    //    gpg: Signature made 11/29/2021 8:32:25 AM Eastern Standard Time
+    //    gpg:                using RSA key 14912E2F9B4D33703F5241ED90A2D107CF1C45C4
+    //    gpg: Good signature from "David Holberton <dph@gmail.com>" [unknown]
+    //    gpg: WARNING: Using untrusted key!
+    //
+    //    C:\Users\David Holberton\Downloads\gpgtempdir>
+
+    public void testVerify() {
+        System.out.println("\n\n========== testVerify ==========");
+        byte [] verifyBytes = verify(GPG_VERIFY_ASC_FILENAME, GPG_VERIFY_ORIG_FILENAME);
+        System.out.println(" verifyBytes = " + verifyBytes);
+        System.out.println(" verifyBytes.length = " + verifyBytes.length);
+        String verifyString = new String(verifyBytes, StandardCharsets.UTF_8);
+        System.out.println(verifyString);
+    }
+
+    byte[] verify(String filename1, String filename2) {
+        System.out.println("\n\n========== verify ==========");
+        List <String> commandList = List.of(
+                // "gpg",
+                GPG_BIN_PATH,
+//                "--no-tty",
+//                "--batch",
+//                "--yes",
+//                "--always-trust",
+                "--verify",
+                filename1,
+                filename2
+        );
+        System.out.println(String.join(" ",commandList));
+        ProcessBuilder pb = new ProcessBuilder(commandList);
+        setUpEnvironment(pb);
+        return startProcessBuilder(pb,null);
+    }
+
     public void testVersion() {
+        System.out.println("\n\n========== testVersion ==========");
         byte [] versionBytes = version();
         System.out.println(" versionBytes.length = " + versionBytes.length);
         String versionString = new String(versionBytes, StandardCharsets.UTF_8);
@@ -53,6 +111,7 @@ public class GpgUtil {
     }
 
     public void testListKeys() {
+        System.out.println("\n\n========== testListKeys ==========");
         byte [] listKeysBytes = listKeys();
         System.out.println(" listKeysBytes.length = " + listKeysBytes.length);
         String listKeysString = new String(listKeysBytes, StandardCharsets.UTF_8);
@@ -60,6 +119,7 @@ public class GpgUtil {
     }
 
     void testEncrypt(String recipient, String plainText) {
+        System.out.println("\n\n========== testEncrypt ==========");
         System.out.println(plainText);
         byte [] plainBytes = plainText.getBytes();
         System.out.println(" plainBytes.length = " + plainBytes.length);
@@ -75,6 +135,7 @@ public class GpgUtil {
     }
 
     byte[] version() {
+        System.out.println("\n\n========== version ==========");
         List <String> commandList = List.of(
                 // "gpg",
                 GPG_BIN_PATH,
@@ -90,6 +151,7 @@ public class GpgUtil {
     }
 
     byte[] listKeys() {
+        System.out.println("\n\n========== listKeys ==========");
         List <String> commandList = List.of(
                 // "gpg",
                 GPG_BIN_PATH,
@@ -105,11 +167,13 @@ public class GpgUtil {
     }
 
     byte[] encrypt(String recipient, String inputFilename, String outputFilename) {
+        System.out.println("\n\n========== encrypt(1) ==========");
         // still need to implement this method
         return null;
     }
 
     byte[] encrypt(String recipient, byte[] plain) {
+        System.out.println("\n\n========== encrypt(2) ==========");
         //    String [] commandArray = {
         //            "gpg",
         //            "--no-tty",
@@ -166,6 +230,7 @@ public class GpgUtil {
     }
 
     byte[] startProcessBuilder(ProcessBuilder pb, byte[] stdinBytes) {
+        // System.out.println("\n\n========== startProcessBuilder ==========");
         try {
             Process p = pb.start();
             if (stdinBytes != null && stdinBytes.length > 0) {
